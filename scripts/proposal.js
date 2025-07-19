@@ -12,8 +12,8 @@ async function proposing() {
     const tx = await governor.propose(
         [token.address],
         [0],
-        [token.interface.encodeFunctionData('mint', [owner.address, parseEther('25000')])],
-        'Give the owner more tokens'
+        [token.interface.encodeFunctionData('mint', [owner.address, parseEther('30000')])],
+        'Give the owner more tokens!'
     )
 
     const receipt = await tx.wait();
@@ -21,12 +21,9 @@ async function proposing() {
 
     console.log('Proposal created with Id:', proposalId.toString())
 
-    return {proposalId, governor};
 }
 
 proposing().catch(error => {
     console.error(error);
     process.exit(1);
 })
-
-module.exports = proposing;
